@@ -59,11 +59,13 @@ function lang() {
 function localtime() {
   if [[ ! -e /etc/localtime ]]; then
     local zone
+    cd /usr/share/zoneinfo
     while [[ -z $zone || ! -e /usr/share/zoneinfo/$zone ]]; do
-      echo -n 'localtime? '
-      read zone
+      echo -n 'localtime? (tab-tab) '
+      read -e zone
     done
-    ln -s /usr/share/zoneinfo/$zone /etc/localtime
+    ln -s $PWD/$zone /etc/localtime
+    cd - >/dev/null
   fi
 }
 
