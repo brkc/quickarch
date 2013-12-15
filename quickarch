@@ -32,7 +32,7 @@ function echo() {
   sleep 1 # apparent bug in virtualbox
           # causes text to be on same line
           # as menu choice if printed too fast
-  echo "$@"
+  command echo "$@"
 }
 
 function nag() {
