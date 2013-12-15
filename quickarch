@@ -122,6 +122,7 @@ function wifi() {
 }
 
 function grub() {
+  lsblk
   local device
   while [[ ! -b $device ]]; do
     echo -n 'what device for grub? '
