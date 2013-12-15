@@ -30,7 +30,7 @@ function yes() {
   local answer
   read answer
   case "$answer" in
-    [Yy][Ee][Ss]) return 0 ;;
+    [Yy]|[Yy][Ee][Ss]) return 0 ;;
   esac
   return 1;
 }
