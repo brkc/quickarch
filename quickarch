@@ -124,6 +124,7 @@ wifi() {
 
 grub() {
   lsblk
+  echo -e "\n\n"
   local device
   while [[ ! -b $device ]]; do
     echo -n 'what device for grub? '
