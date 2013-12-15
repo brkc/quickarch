@@ -1,23 +1,24 @@
 #!/usr/bin/env bash
-function all() {
+
+function default() {
   editor
   locale
   lang
   localtime
-  clock
-  host
+  hwclock
+  hostname
   dhcp
   wifi
 }
 
-function options() {
-  echo all - everything below
+function help() {
+  echo default - everything below
   echo editor - choose \$EDITOR
   echo locale - choose locales then locale-gen
   echo lang - choose LANG from available locales
   echo localtime - link /etc/localtime
-  echo clock - utc or localtime
-  echo host - set hostname
+  echo hwclock - utc or localtime
+  echo hostname - set hostname
   echo dhcp - enables dhcpcd
   echo wifi - installs wifi packages
 }
@@ -93,8 +94,8 @@ function localtime() {
   fi
 }
 
-function clock() {
-  echo clock?
+function hwclock() {
+  echo hwclock?
   select offset in utc localtime; do
     case $offset in
       utc) ;&
@@ -102,10 +103,10 @@ function clock() {
       *) nag ;;
     esac
   done
-  hwclock --systohc --$offset
+  command hwclock --systohc --$offset
 }
 
-function host() {
+function hostname() {
   local hostname
   while [[ -z $hostname ]]; do
     echo -n 'hostname? '
@@ -123,3 +124,8 @@ function wifi() {
   echo -n 'want wifi? '
   yes && install iw wpa_supplicant dialog
 }
+
+case "$1" in
+  help) help ;;
+  *) default ;;
+esac
