@@ -25,7 +25,7 @@ curl -L tinyurl.com/quickarch > quickarch
 bash quickarch
 ```
 
-How to answer it:
+How it looks:
 ```
 editor?
 1) vim
