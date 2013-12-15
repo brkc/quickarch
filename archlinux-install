@@ -20,7 +20,7 @@ function nag() {
 
 function editor() {
   echo editor?
-  select EDITOR in vi vim nano; do
+  select EDITOR in vim vi nano; do
     case $EDITOR in
       vim) install vim ;&
       vi) ;&
