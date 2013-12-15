@@ -26,10 +26,14 @@ function yes() {
   return 1;
 }
 
-function nag() {
-  sleep 1 # apparent bug in bash select construct
+function echo() {
+  sleep 1 # apparent bug in virtualbox
           # causes text to be on same line
           # as menu choice if printed too fast
+  echo "$@"
+}
+
+function nag() {
   echo try again
 }
 
