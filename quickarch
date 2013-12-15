@@ -141,16 +141,8 @@ function help() {
   echo grub - installs grub with os-prober
 }
 
-case "$1" in
-  editor) editor ;;
-  locale) locale ;;
-  lang) lang ;;
-  localtime) localtime ;;
-  hwclock) hwclock ;;
-  hostname) hostname ;;
-  dhcp) dhcp ;;
-  wifi) wifi ;;
-  grub) grub ;;
-  help) help ;;
-  *) default ;;
-esac
+if [[ $(type -t "$1") = function ]]; then
+  "$1"
+else
+  default
+fi
