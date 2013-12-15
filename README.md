@@ -51,5 +51,12 @@ clock?
 hostname? archlinux
 want dhcp? y
 want wifi? y
-want grub? y
+what device for grub? /dev/sda
+for root...
+Enter new UNIX password:
+Retype new UNIX password:
+username? brkc
+Enter new UNIX password:
+want sudo for brkc? y
+more users? n
 ```
