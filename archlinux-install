@@ -112,11 +112,11 @@ function host() {
 }
 
 function dhcp() {
-  echo want dhcp?
+  echo -n want dhcp?
   yes && systemctl enable dhcpcd
 }
 
 function wifi() {
-  echo want wifi?
+  echo -n want wifi?
   yes && install iw wpa_supplicant dialog
 }
