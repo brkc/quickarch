@@ -10,7 +10,6 @@ function default() {
   dhcp
   wifi
   grub
-  sudo
 }
 
 function install() {
