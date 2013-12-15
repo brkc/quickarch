@@ -45,11 +45,13 @@ function lang() {
       lang
       return
   fi
-  echo locale?
-  select LANG in locales; do
-    for locale in locales; do
+  while true; do
+    echo -n 'locale? '
+    read LANG
+    for locale in $locales; do
       [[ $LANG = $locale ]] && break
     done
+    [[ $LANG = $locale ]] && break
     nag
   done
   echo LANG=$LANG >/etc/locale.conf
