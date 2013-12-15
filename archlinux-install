@@ -59,12 +59,13 @@ function lang() {
 }
 
 function localtime() {
-  local zone
-  while [[ ! -e /usr/share/zoneinfo/$zone ]]; do
-    echo -n 'localtime? '
-    read zone
-  done
-  ln -s /usr/share/zoneinfo/$zone /etc/localtime
+  if [[ ! -e /etc/localtime ]]; then
+    local zone
+    while [[ ! -e /usr/share/zoneinfo/$zone ]]; do
+      echo -n 'localtime? '
+      read zone
+    done
+  fi
 }
 
 function clock() {
