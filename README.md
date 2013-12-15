@@ -11,9 +11,7 @@ to do before chrooting.
 
 When and how to run it:
 ```
-fdisk /dev/sda
-mkfs.ext4 /dev/sda1
-mount /dev/sda1 /mnt
+mount /dev/sdaX /mnt
 pacstrap /mnt base base-devel
 genfstab /mnt > /mnt/etc/fstab
 arch-chroot /mnt
