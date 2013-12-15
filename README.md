@@ -24,7 +24,7 @@ locale?
 1) en_US.UTF-8
 2) en_US
 #? 1
-localtime? America/New_York
+localtime? (tab-tab) America/New_York
 clock?
 1) utc
 2) localtime
