@@ -44,9 +44,8 @@ function lang() {
       lang
       return
   fi
-  while true; do
-    echo -n 'locale? '
-    read LANG
+  echo locale?
+  select LANG in $locales; do
     for locale in $locales; do
       [[ $LANG = $locale ]] && break
     done
