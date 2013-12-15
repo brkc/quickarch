@@ -72,7 +72,8 @@ function hwclock() {
   select offset in utc localtime; do
     case $offset in
       utc) ;&
-      localtime) hwclock --systohc --$offset ;;
+      localtime) hwclock --systohc --$offset
+                 break ;;
       *) nag ;;
     esac
   done
