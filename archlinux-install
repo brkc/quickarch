@@ -3,6 +3,7 @@ function main() {
   editor
   locale_gen
   lang
+  localtime
   hwclock
   hostname
   dhcp
@@ -53,6 +54,15 @@ function lang() {
   done
   echo LANG=$LANG >/etc/locale.conf
   export LANG
+}
+
+function localtime() {
+  local zone
+  while [[ ! -e /usr/share/zoneinfo/$zone ]]; do
+    echo -n 'localtime? '
+    read zone
+  done
+  ln -s /usr/share/zoneinfo/$zone /etc/localtime
 }
 
 function hwclock() {
