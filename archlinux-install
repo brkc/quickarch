@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-function main() {
+function all() {
   editor
   locale_gen
   lang
