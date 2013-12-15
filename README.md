@@ -1,13 +1,22 @@
 quickarch
 =================
+This script automates the tedium
+that comes after chrooting your
+Arch Linux installation. This includes
+* adding users
+* enabling sudo
+* installing a bootloader
+* setting your
+  - locale-specific information
+  - hostname
+  - passwords
+* and anything else you might forget to do
+  before your mass package install!
 
-This script is mainly to prompt me for
-the arguably mandatory settings
-that I always forget to set when installing.
-
-It does **not** guide you through partitioning,
-pacstrap, or anything else you might want
-to do before chrooting.
+It does *not* guide you
+through partitioning, pacstrap,
+or anything else you might want to do
+before chrooting.
 
 When and how to run it:
 ```
