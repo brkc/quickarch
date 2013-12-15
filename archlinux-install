@@ -14,7 +14,7 @@ function options() {
   echo all - everything below
   echo editor - choose \$EDITOR
   echo locale - choose locales then locale-gen
-  echo lang - choose LANG from locale.gen
+  echo lang - choose LANG from available locales
   echo localtime - link /etc/localtime
   echo clock - utc or localtime
   echo host - set hostname
