@@ -17,10 +17,8 @@ mount /dev/sda1 /mnt
 pacstrap /mnt base base-devel
 genfstab /mnt > /mnt/etc/fstab
 arch-chroot /mnt
-pacman -S git
-git clone https://github.com/brkc/quickarch
-cd quickarch
-./quickarch
+curl -L tinyurl.com/quickarch > quickarch
+bash quickarch
 ```
 
 How to answer it:
