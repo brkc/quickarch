@@ -26,6 +26,15 @@ function install() {
   pacman --sync --needed --noconfirm "$@"
 }
 
+function yes() {
+  local answer
+  read answer
+  case "$answer" in
+    [Yy][Ee][Ss]) return 0 ;;
+  esac
+  return 1;
+}
+
 function nag() {
   echo try again
 }
@@ -103,9 +112,11 @@ function host() {
 }
 
 function dhcp() {
-  systemctl enable dhcpcd
+  echo want dhcp?
+  yes && systemctl enable dhcpcd
 }
 
 function wifi() {
-  install iw wpa_supplicant dialog
+  echo want wifi?
+  yes && install iw wpa_supplicant dialog
 }
