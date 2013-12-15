@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 function all() {
   editor
-  locale_gen
+  locale
   lang
   localtime
   hwclock
@@ -32,7 +32,7 @@ function editor() {
   export EDITOR
 }
 
-function locale_gen() {
+function locale() {
   [[ -n $EDITOR ]] || editor
   $EDITOR /etc/locale.gen
   locale-gen
@@ -41,7 +41,7 @@ function locale_gen() {
 function lang() {
   local locales=$(egrep -v '^(#.*)?$' /etc/locale.gen | cut -d' ' -f1)
   if [[ -n $locales ]]; then
-      locale_gen
+      locale
       lang
       return
   fi
