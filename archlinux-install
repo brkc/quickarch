@@ -42,7 +42,7 @@ function lang() {
   if [[ -n $locales ]]; then
       locale_gen
       lang
-      return }
+      return
   fi
   echo locale?
   select LANG in locales; do
