@@ -9,6 +9,7 @@ function default() {
   hostname
   dhcp
   wifi
+  grub
 }
 
 function install() {
@@ -113,6 +114,12 @@ function wifi() {
   yes && install iw wpa_supplicant dialog
 }
 
+function grub() {
+  install grub os-prober
+  grub-install --recheck /dev/sda
+  grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 function help() {
   echo default - everything below
   echo editor - choose \$EDITOR
@@ -123,6 +130,7 @@ function help() {
   echo hostname - set hostname
   echo dhcp - enables dhcpcd
   echo wifi - installs wifi packages
+  echo grub - installs grub with os-prober to /dev/sda
 }
 
 case "$1" in
@@ -134,6 +142,7 @@ case "$1" in
   hostname) hostname ;;
   dhcp) dhcp ;;
   wifi) wifi ;;
+  grub) grub ;;
   help) help ;;
   *) default ;;
 esac
