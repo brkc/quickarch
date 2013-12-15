@@ -4,7 +4,7 @@ function all() {
   locale
   lang
   localtime
-  hwclock
+  clock
   hostname
   dhcp
   wifi
@@ -67,16 +67,16 @@ function localtime() {
   ln -s /usr/share/zoneinfo/$zone /etc/localtime
 }
 
-function hwclock() {
-  echo hwclock?
+function clock() {
+  echo clock?
   select offset in utc localtime; do
     case $offset in
       utc) ;&
-      localtime) hwclock --systohc --$offset
-                 break ;;
+      localtime) break ;;
       *) nag ;;
     esac
   done
+  hwclock --systohc --$offset
 }
 
 function hostname() {
