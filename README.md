@@ -23,7 +23,7 @@ cd quickarch
 ./quickarch
 ```
 
-How to use it:
+How to answer it:
 ```
 editor?
 1) vim
