@@ -2,7 +2,7 @@ quickarch
 =================
 This script automates the tedium
 that comes after chrooting your
-Arch Linux installation. This includes
+Arch Linux installation. This includes:
 * adding users
 * enabling sudo
 * installing a bootloader
