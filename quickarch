@@ -148,6 +148,7 @@ function adduser() {
     read username
   done
   useradd -m $username
+  passwd $username
   chfn $username
   echo -n "want sudo for $username? "
   yes && gpasswd -a $username wheel
