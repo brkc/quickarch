@@ -12,7 +12,7 @@ function all() {
 
 function options() {
   echo all - everything below
-  echo editor - choose $EDITOR
+  echo editor - choose \$EDITOR
   echo locale - choose locales then locale-gen
   echo lang - choose LANG from locale.gen
   echo localtime - link /etc/localtime
