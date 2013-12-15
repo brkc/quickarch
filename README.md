@@ -10,6 +10,7 @@ pacstrapping, or anything else you might want
 to do before chrooting.
 
 ```
+fdisk /dev/sda
 mkfs.ext4 /dev/sda1
 mount /dev/sda1 /mnt
 pacstrap /mnt base base-devel
