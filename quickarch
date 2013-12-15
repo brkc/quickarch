@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function default() {
+default() {
   editor
   locale
   lang
@@ -17,20 +17,20 @@ function default() {
 
 # apparent bug in virtualbox causes text to be
 # on same line as menu choice if printed too fast
-function echo() {
+echo() {
   sleep 1
   command echo "$@"
 }
 
-function nag() {
+nag() {
   echo try again
 }
 
-function install() {
+install() {
   pacman --sync --needed --noconfirm "$@"
 }
 
-function yes() {
+yes() {
   local answer
   read answer
   case "$answer" in
@@ -39,7 +39,7 @@ function yes() {
   return 1;
 }
 
-function editor() {
+editor() {
   echo editor?
   select EDITOR in vim vi nano; do
     case $EDITOR in
@@ -52,13 +52,13 @@ function editor() {
   export EDITOR
 }
 
-function locale() {
+locale() {
   [[ -n $EDITOR ]] || editor
   $EDITOR /etc/locale.gen
   locale-gen
 }
 
-function lang() {
+lang() {
   local locales=$(egrep -v '^(#.*)?$' /etc/locale.gen | cut -d' ' -f1)
   if [[ -z $locales ]]; then
       locale
@@ -77,7 +77,7 @@ function lang() {
   export LANG
 }
 
-function localtime() {
+localtime() {
   if [[ ! -e /etc/localtime ]]; then
     local zone
     cd /usr/share/zoneinfo
@@ -90,7 +90,7 @@ function localtime() {
   fi
 }
 
-function hwclock() {
+hwclock() {
   echo hwclock?
   select offset in utc localtime; do
     case $offset in
@@ -102,7 +102,7 @@ function hwclock() {
   command hwclock --systohc --$offset
 }
 
-function hostname() {
+hostname() {
   local hostname
   while [[ -z $hostname ]]; do
     echo -n 'hostname? '
@@ -111,17 +111,17 @@ function hostname() {
   echo $hostname >/etc/hostname
 }
 
-function dhcp() {
+dhcp() {
   echo -n 'want dhcp? '
   yes && systemctl enable dhcpcd
 }
 
-function wifi() {
+wifi() {
   echo -n 'want wifi? '
   yes && install iw wpa_supplicant dialog
 }
 
-function grub() {
+grub() {
   lsblk
   local device
   while [[ ! -b $device ]]; do
@@ -135,17 +135,17 @@ function grub() {
   [[ -e $grubcfg.new ]] && mv $grubcfg{.new,} # apparent bug with os-prober
 }
 
-function root() {
+root() {
   echo "\n\n"
   echo for root...
   passwd
 }
 
-function sudo() {
+sudo() {
   perl -i -0 -pe 's/# (%wheel ALL=\(ALL\) ALL)/\1/' /etc/sudoers
 }
 
-function adduser() {
+adduser() {
   local username
   while [[ -z $username ]]; do
     echo -n 'username? '
@@ -160,7 +160,7 @@ function adduser() {
   yes && adduser
 }
 
-function help() {
+help() {
   echo default - everything below
   echo editor - choose \$EDITOR
   echo locale - choose locales then locale-gen
