@@ -78,7 +78,7 @@ function hwclock() {
 
 function hostname() {
   local hostname
-  while [[ -n $hostname ]]; do
+  while [[ -z $hostname ]]; do
     echo -n 'hostname? '
     read hostname
   done
