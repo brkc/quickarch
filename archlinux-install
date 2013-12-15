@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+function main() {
+  editor
+  locale_gen
+  lang
+  hwclock
+  hostname
+  dhcp
+  wifi
+  sudo
+}
+
+function install() {
+  pacman -S --needed --noconfirm "$@"
+}
+
+function nag() {
+  echo try again
+}
+
+function editor() {
+  echo editor?
+  select EDITOR in vi vim nano; do
+    case $EDITOR in
+      vim) install vim ;&
+      vi) ;&
+      nano) break ;;
+      *) nag ;;
+    esac
+  done
+  export EDITOR
+}
+
+function locale_gen() {
+  [[ -n $EDITOR ]] || editor
+  $EDITOR /etc/locale.gen
+  locale-gen
+}
+
+function lang() {
+  local locales=$(egrep -v '^(#.*)?$' /etc/locale.gen | cut -d' ' -f1)
+  if [[ -n $locales ]]; then
+      locale_gen
+      lang
+      return }
+  fi
+  echo locale?
+  select LANG in locales; do
+    for locale in locales; do
+      [[ $LANG = $locale ]] && break
+    done
+    nag
+  done
+  echo LANG=$LANG >/etc/locale.conf
+  export LANG
+}
+
+function hwclock() {
+  echo hwclock?
+  select offset in utc localtime; do
+    case $offset in
+      utc) ;&
+      localtime) hwclock --systohc --$offset ;;
+      *) nag ;;
+    esac
+  done
+}
+
+function hostname() {
+  local hostname
+  while [[ -n $hostname ]]; do
+    echo -n 'hostname? '
+    read hostname
+  done
+  echo $hostname >/etc/hostname
+}
+
+function dhcp() {
+  systemctl enable dhcpcd
+}
+
+function wifi() {
+  install iw wpa_supplicant dialog
+}
+
+function sudo() {
+  install sudo
+  perl -i -0 -pe 's/^# (%wheel ALL=\(ALL\))$/\1/' /etc/sudoers
+}
