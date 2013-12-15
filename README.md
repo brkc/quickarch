@@ -9,6 +9,7 @@ It does *not* guide you through partitioning,
 pacstrapping, or anything else you might want
 to do before chrooting.
 
+Here is how I use it:
 ```
 fdisk /dev/sda
 mkfs.ext4 /dev/sda1
