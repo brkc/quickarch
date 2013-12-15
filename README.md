@@ -5,7 +5,7 @@ that comes after chrooting your
 Arch Linux installation. This includes:
 * adding users
 * enabling sudo
-* installing a bootloader
+* installing GRUB
 * setting your
   - locale-specific information
   - hostname
