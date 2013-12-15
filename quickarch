@@ -124,7 +124,7 @@ wifi() {
 
 grub() {
   lsblk
-  echo -e "\n\n"
+  echo -e "\n"
   local device
   while [[ ! -b $device ]]; do
     echo -n 'what device for grub? '
@@ -138,7 +138,7 @@ grub() {
 }
 
 root() {
-  echo -e "\n\n"
+  echo -e "\n"
   echo for root...
   passwd
 }
