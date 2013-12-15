@@ -15,6 +15,17 @@ function default() {
   adduser
 }
 
+# apparent bug in virtualbox causes text to be
+# on same line as menu choice if printed too fast
+function echo() {
+  sleep 1
+  command echo "$@"
+}
+
+function nag() {
+  echo try again
+}
+
 function install() {
   pacman --sync --needed --noconfirm "$@"
 }
@@ -26,17 +37,6 @@ function yes() {
     [Yy]|[Yy][Ee][Ss]) return 0 ;;
   esac
   return 1;
-}
-
-function echo() {
-  sleep 1 # apparent bug in virtualbox
-          # causes text to be on same line
-          # as menu choice if printed too fast
-  command echo "$@"
-}
-
-function nag() {
-  echo try again
 }
 
 function editor() {
