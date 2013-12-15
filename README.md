@@ -32,6 +32,7 @@ editor?
 2) vi
 3) nano
 #? 3
+<editing locale.gen>
 Generating locales...
   en_US.UTF-8
   en_US.ISO-8859-1
