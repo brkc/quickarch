@@ -115,9 +115,17 @@ function wifi() {
 }
 
 function grub() {
-  install grub os-prober
-  grub-install --recheck /dev/sda
-  grub-mkconfig -o /boot/grub/grub.cfg
+  echo -n 'want grub? '
+  if yes; then
+    local device
+    while [[ ! -b $device ]]; do
+      echo -n 'what device? '
+      read device
+    done
+    install grub os-prober
+    grub-install --recheck $device
+    grub-mkconfig -o /boot/grub/grub.cfg
+  fi
 }
 
 function help() {
@@ -130,7 +138,7 @@ function help() {
   echo hostname - set hostname
   echo dhcp - enables dhcpcd
   echo wifi - installs wifi packages
-  echo grub - installs grub with os-prober to /dev/sda
+  echo grub - installs grub with os-prober
 }
 
 case "$1" in
