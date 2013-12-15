@@ -20,6 +20,6 @@ arch-chroot /mnt
 pacman -S git
 git clone https://github.com/brkc/archlinux-install
 cd archlinux-install
-. archlinux-install
+. ./archlinux-install
 all
 ```
