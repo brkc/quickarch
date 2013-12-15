@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# vim: ft=sh et sts=2 sw=2 tw=78
 
 default() {
   editor
