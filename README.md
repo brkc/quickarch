@@ -1,7 +1,13 @@
 archlinux-install
 =================
 
-A minimal script to automate an Arch Linux install.
+This script is mainly to prompt me for
+the arguably mandatory settings
+that I always forget to set when installing.
+
+It does *not* guide you through partitioning,
+pacstrapping, or anything else you might want
+to do before chrooting.
 
 ```
 mkfs.ext4 /dev/sda1
