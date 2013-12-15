@@ -13,7 +13,7 @@ Arch Linux installation. This includes:
 * and anything else you might forget to do
   before your mass package install!
 
-It does *not* guide you
+It does **not** guide you
 through partitioning, pacstrap,
 or anything else you might want to do
 before chrooting.
