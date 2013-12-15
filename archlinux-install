@@ -61,7 +61,7 @@ function lang() {
 function localtime() {
   if [[ ! -e /etc/localtime ]]; then
     local zone
-    while [[ ! -e /usr/share/zoneinfo/$zone ]]; do
+    while [[ -z $zone || ! -e /usr/share/zoneinfo/$zone ]]; do
       echo -n 'localtime? '
       read zone
     done
