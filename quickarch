@@ -135,7 +135,8 @@ function grub() {
 }
 
 function root() {
-  echo for root
+  echo "\n\n"
+  echo for root...
   passwd
 }
 
