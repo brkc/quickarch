@@ -146,6 +146,7 @@ function help() {
   echo dhcp - enables dhcpcd
   echo wifi - installs wifi packages
   echo grub - installs grub with os-prober
+  echo root - sets root password
 }
 
 if [[ $(type -t "$1") = function ]]; then
