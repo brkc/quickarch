@@ -65,6 +65,7 @@ function localtime() {
       echo -n 'localtime? '
       read zone
     done
+    ln -s /usr/share/zoneinfo/$zone /etc/localtime
   fi
 }
 
