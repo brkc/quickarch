@@ -44,4 +44,7 @@ clock?
 2) localtime
 #? 1
 hostname? archlinux
+want dhcp? y
+want wifi? y
+want grub? y
 ```
