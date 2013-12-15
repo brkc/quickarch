@@ -1,4 +1,4 @@
-archlinux-install
+quickarch
 =================
 
 This script is mainly to prompt me for
