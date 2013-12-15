@@ -137,7 +137,7 @@ grub() {
 }
 
 root() {
-  echo "\n\n"
+  echo -e "\n\n"
   echo for root...
   passwd
 }
