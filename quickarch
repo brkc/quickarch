@@ -10,6 +10,7 @@ function default() {
   dhcp
   wifi
   grub
+  sudo
 }
 
 function install() {
@@ -115,17 +116,14 @@ function wifi() {
 }
 
 function grub() {
-  echo -n 'want grub? '
-  if yes; then
-    local device
-    while [[ ! -b $device ]]; do
-      echo -n 'what device? '
-      read device
-    done
-    install grub os-prober
-    grub-install --recheck $device
-    grub-mkconfig -o /boot/grub/grub.cfg
-  fi
+  local device
+  while [[ ! -b $device ]]; do
+    echo -n 'what device for grub? '
+    read device
+  done
+  install grub os-prober
+  grub-install --recheck $device
+  grub-mkconfig -o /boot/grub/grub.cfg
 }
 
 function help() {
