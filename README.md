@@ -20,10 +20,7 @@ before chrooting.
 
 When and how to run it:
 ```
-mount /dev/sdaX /mnt
-pacstrap /mnt base base-devel
-genfstab /mnt > /mnt/etc/fstab
-arch-chroot /mnt
+arch-chroot /mnt/arch
 curl -L tinyurl.com/quickarch > quickarch
 bash quickarch
 ```
