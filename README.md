@@ -9,7 +9,30 @@ It does **not** guide you through partitioning,
 pacstrap, or anything else you might want
 to do before chrooting.
 
-Here is how I use it:
+How to use it:
+```
+editor?
+1) vim
+2) vi
+3) nano
+#? 3
+Generating locales...
+  en_US.UTF-8
+  en_US.ISO-8859-1
+Generation complete.
+locale?
+1) en_US.UTF-8
+2) en_US
+#? 1
+localtime? America/New_York
+clock?
+1) utc
+2) localtime
+#? 1
+hostname? archlinux
+```
+
+What I do to run it:
 ```
 fdisk /dev/sda
 mkfs.ext4 /dev/sda1
