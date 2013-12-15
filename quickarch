@@ -129,7 +129,9 @@ function grub() {
   done
   install grub os-prober
   grub-install --recheck $device
-  grub-mkconfig -o /boot/grub/grub.cfg
+  local grubcfg=/boot/grub/grub.cfg
+  grub-mkconfig -o $grubcfg
+  [[ -e $grubcfg.new ]] && mv $grubcfg{.new,} # apparent bug with os-prober
 }
 
 function root() {
