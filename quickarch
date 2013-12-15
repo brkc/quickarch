@@ -11,6 +11,8 @@ function default() {
   wifi
   grub
   root
+  sudo
+  adduser
 }
 
 function install() {
@@ -135,6 +137,24 @@ function root() {
   passwd
 }
 
+function sudo() {
+  perl -i -0 -pe 's/# (%wheel ALL=\(ALL\) ALL)/\1/' /etc/sudoers
+}
+
+function adduser() {
+  local username
+  while [[ -z $username ]]; do
+    echo -n 'username? '
+    read username
+  done
+  useradd -m $username
+  chfn $username
+  echo -n "want sudo for $username? "
+  yes && gpasswd -a $username wheel
+  echo -n 'more users? '
+  yes && adduser
+}
+
 function help() {
   echo default - everything below
   echo editor - choose \$EDITOR
@@ -147,6 +167,8 @@ function help() {
   echo wifi - installs wifi packages
   echo grub - installs grub with os-prober
   echo root - sets root password
+  echo sudo - gives wheel group access sudo
+  echo adduser - what do you think?
 }
 
 if [[ $(type -t "$1") = function ]]; then
