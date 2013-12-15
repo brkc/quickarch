@@ -36,8 +36,8 @@ function yes() {
 }
 
 function nag() {
-  sleep 1 # apparent bug in the bash select construct
-          # causes text to be on the same line
+  sleep 1 # apparent bug in bash select construct
+          # causes text to be on same line
           # as menu choice if printed too fast
   echo try again
 }
