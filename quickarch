@@ -11,18 +11,6 @@ function default() {
   wifi
 }
 
-function help() {
-  echo default - everything below
-  echo editor - choose \$EDITOR
-  echo locale - choose locales then locale-gen
-  echo lang - choose LANG from available locales
-  echo localtime - link /etc/localtime
-  echo hwclock - utc or localtime
-  echo hostname - set hostname
-  echo dhcp - enables dhcpcd
-  echo wifi - installs wifi packages
-}
-
 function install() {
   pacman --sync --needed --noconfirm "$@"
 }
@@ -125,7 +113,27 @@ function wifi() {
   yes && install iw wpa_supplicant dialog
 }
 
+function help() {
+  echo default - everything below
+  echo editor - choose \$EDITOR
+  echo locale - choose locales then locale-gen
+  echo lang - choose LANG from available locales
+  echo localtime - link /etc/localtime
+  echo hwclock - utc or localtime
+  echo hostname - set hostname
+  echo dhcp - enables dhcpcd
+  echo wifi - installs wifi packages
+}
+
 case "$1" in
+  editor) editor ;;
+  locale) locale ;;
+  lang) lang ;;
+  localtime) localtime ;;
+  hwclock) hwclock ;;
+  hostname) hostname ;;
+  dhcp) dhcp ;;
+  wifi) wifi ;;
   help) help ;;
   *) default ;;
 esac
