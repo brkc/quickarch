@@ -40,7 +40,7 @@ function locale() {
 
 function lang() {
   local locales=$(egrep -v '^(#.*)?$' /etc/locale.gen | cut -d' ' -f1)
-  if [[ -n $locales ]]; then
+  if [[ -z $locales ]]; then
       locale
       lang
       return
